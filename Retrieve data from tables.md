@@ -56,3 +56,38 @@ SELECT *
 FROM customer
 WHERE grade = 200;
 ```
+
+### 11. Write a SQL query to display the order number followed by order date and the purchase amount for each order which will be delivered by the salesman who is holding the ID 5001.
+```SQL
+SELECT ord_no, ord_date, purch_amt
+FROM orders
+WHERE salesman_id = 5001;
+```
+
+### 12. Write a SQL query to display the Nobel prizes for 1970.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE YEAR = 1970;
+```
+
+### 13. Write a SQL query to know the winner of the 1971 prize for Literature.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE YEAR = 1971 AND SUBJECT = 'Literature';
+```
+
+### 14. Write a SQL query to display the year and subject that won 'Dennis Gabor' his prize.
+```SQL
+SELECT YEAR, SUBJECT
+FROM nobel_win
+WHERE WINNER = 'Dennis Gabor';
+```
+
+### 15. Write a SQL query to give the name of the 'Physics' winners since the year 1950.
+```SQL
+SELECT WINNER
+FROM nobel_win
+WHERE SUBJECT = 'Physics' AND YEAR >= 1950;
+```
