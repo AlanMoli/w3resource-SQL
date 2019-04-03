@@ -91,3 +91,86 @@ SELECT WINNER
 FROM nobel_win
 WHERE SUBJECT = 'Physics' AND YEAR >= 1950;
 ```
+
+### 16. Write a SQL query to Show all the details (year, subject, winner, country ) of the Chemistry prize winners between the year 1965 to 1975 inclusive.
+```SQL
+SELECT YEAR, SUBJECT, WINNER, COUNTRY
+FROM nobel_win
+WHERE SUBJECT = 'Chemistry' 
+ AND YEAR BETWEEN 1965 AND 1975;
+```
+
+### 17. Write a SQL query to show all details of the Prime Ministerial winners after 1972 of Menachem Begin and Yitzhak Rabin.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE CATEGORY = 'Prime Minister' 
+ AND YEAR > 1972 
+ AND WINNER IN ('Menachem Begin', 'Yitzhak Rabin');
+```
+
+### 18. Write a SQL query to show all the details of the winners with first name Louis.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE WINNER LIKE 'Louis%';
+```
+
+### 19. Write a SQL query to show all the winners in Physics for 1970 together with the winner of Economics for 1971.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE SUBJECT = 'Physics' AND YEAR = 1970
+ OR (SUBJECT = 'Economics' AND YEAR = 1971);
+```
+
+### 20. Write a SQL query to show all the winners of nobel prize in the year 1970 except the subject Physiology and Economics.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE YEAR = 1970
+ AND SUBJECT NOT IN ('Physiology', 'Economics');
+```
+
+### 21. Write a SQL query to show the winners of a 'Physiology' prize in an early year before 1971 together with winners of a 'Peace' prize in a later year on and after the 1974. 
+```SQL
+SELECT *
+FROM nobel_win
+WHERE SUBJECT = 'Physiology' AND YEAR < 1971
+ OR (SUBJECT = 'Peace' AND YEAR >= 1974);
+```
+
+### 22. Write a SQL query to find all details of the prize won by Johannes Georg Bednorz.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE WINNER = 'Johannes Georg Bednorz';
+```
+
+### 23. Write a SQL query to find all the details of the nobel winners for the subject not started with the letter 'P' and arranged the list as the most recent comes first, then by name in order.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE SUBJECT NOT LIKE 'P%' 
+ ORDER BY YEAR DESC, WINNER;
+```
+
+### 24. Write a SQL query to find all the details of 1970 winners by the ordered to subject and winner name; but the list contain the subject Economics and Chemistry at last.
+```SQL
+SELECT *
+FROM nobel_win
+WHERE YEAR = 1970 
+ ORDER BY 
+  CASE
+    WHEN SUBJECT IN ('Economics', 'Chemistry') THEN 1
+    ELSE 0
+  END,
+  SUBJECT, WINNER;
+```
+
+### 25. Write a SQL query to find all the products with a price between Rs.200 and Rs.600. 
+```SQL
+SELECT *
+FROM item_mast
+WHERE PRO_PRICE BETWEEN 200 AND 600;
+```
