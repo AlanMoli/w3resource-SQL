@@ -174,3 +174,59 @@ SELECT *
 FROM item_mast
 WHERE PRO_PRICE BETWEEN 200 AND 600;
 ```
+
+### 26. Write a SQL query to calculate the average price of all products of the manufacturer which code is 16. 
+```SQL
+SELECT AVG(PRO_PRICE)
+FROM item_mast
+WHERE PRO_COM = 16;
+```
+
+### 27. Write a SQL query to find the item name and price in Rs. 
+```SQL
+SELECT PRO_NAME AS "item name", PRO_PRICE AS "price in RS"
+FROM item_mast;
+```
+
+### 28. Write a SQL query to display the name and price of all the items with a price is equal or more than Rs.250, and the list contain the larger price first and then by name in ascending order.
+```SQL
+SELECT PRO_NAME, PRO_PRICE
+FROM item_mast
+WHERE PRO_PRICE >= 250 
+ORDER BY PRO_PRICE DESC, PRO_NAME;
+```
+
+###29. Write a SQL query to display the average price of the items for each company, showing only the company code.
+```SQL
+SELECT AVG(PRO_PRICE), PRO_COM
+FROM item_mast
+GROUP BY PRO_COM;
+```
+
+### 30. Write a SQL query to find the name and price of the cheapest item(s).
+```SQL
+SELECT PRO_NAME, PRO_PRICE
+FROM item_mast
+WHERE PRO_PRICE = (SELECT MIN(PRO_PRICE) 
+                   FROM item_mast);
+```
+
+### 31. Write a query in SQL to find the last name of all employees, without duplicates. 
+```SQL
+SELECT DISTINCT EMP_LNAME
+FROM emp_details;
+```
+
+### 32. Write a query in SQL to find the data of employees whose last name is 'Snares'. 
+```SQL
+SELECT *
+FROM emp_details
+WHERE EMP_LNAME = 'Snares';
+```
+
+### 33. Write a query in SQL to display all the data of employees that work in the department 57.
+```SQL
+SELECT *
+FROM emp_details
+WHERE EMP_DEPT = 57;
+```
